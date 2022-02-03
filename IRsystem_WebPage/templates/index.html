@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/static/assets/css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+    <link href="/static/assets/css/cropper.min.css" rel="stylesheet" type="text/css"/>
+    <title>Gus Goof Image Search</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .content {
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .system_name {
+            height: 320px;
+        }
+        .header_name {
+            margin-top: 200px;
+            max-height: 120px;
+        }
+        .image_name  {
+            display: block;
+            margin-left: auto; 
+            margin-right: auto;
+        }
+        .search_box {
+            height: 220px;
+            width: 600px;
+            margin-left: auto; 
+            margin-right: auto;
+            margin-top: 20px;
+            background: #fff;
+            border: 1px solid rgba(0,0,0,.2);
+            box-shadow: 0 4px 16px rgb(0 0 0 / 20%);
+            box-sizing: border-box;
+        }
+        .text_desc {
+            margin-top: 20px;
+            margin-left: 20px;
+            margin-right: 20px;
+            height: 50px;
+        }
+        .first_line {
+            font-size: 20px; 
+            font-weight: bold; 
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .second_line {
+            font-size: 16px;
+            font-family: Arial, Helvetica, sans-serif; 
+            line-height: 2;
+        }
+        .upload_file_container {
+            height: 150px;
+        }
+        #upload_places {
+            height: 135px;
+            display: block;
+            margin: 15px 0 0;
+        }
+        .title_name {
+            width: 160px; 
+            height: 35px; 
+            color: black; 
+            font-family: Arial, Helvetica, sans-serifq; 
+            font-size: 15px; 
+            background: #f8f9fa; 
+            padding-left: 20px;
+            border-top: 1px solid rgba(0,0,0,.2);
+            border-left: 1px solid rgba(0,0,0,.2);
+            border-right: 1px solid rgba(0,0,0,.2);
+            box-sizing: border-box;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+        #upload_box {
+            height: 100px;
+            background: #f8f9fa;
+            border: 1px solid rgba(0,0,0,.2);
+        }
+        .image {
+            width: 300px;
+            margin: 7px 4px;
+            font-size: 16px;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #202124;
+        }
+        
+        .label_text {
+            font-size: 14px;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #202124;
+        }
+
+        .AddInput {
+            width: 50px;
+            text-align: center;
+        }
+
+        .search_button {
+            text-align: center; 
+            font-size: 13px;
+            font-weight: bold;
+            width: 130px;
+            height: 40px;
+            padding: 0px 8px;
+            background-color: #4487f6;
+            cursor: pointer;
+            font-family: Arial, Helvetica, sans-serif;
+            border: 3px solid #4487f6;
+            outline: none;
+            }
+
+        .search_button:hover {
+            background-color: #fff;
+            transition: 0.2s linear;
+            }
+
+        .none {
+            height: 279px;
+        }
+
+        img #image {
+            display: block;
+            max-width: 100%;
+        }
+        .preview {
+            overflow: hidden;
+            width: 160px; 
+            height: 160px;
+            margin: 10px;
+            border: 1px solid red;
+        }
+    </style>
+
+</head>
+<body>
+
+    {% include "header.html" %}
+
+    <div class="content">
+        <div class="system_name">
+            <div class="header_name">
+                <img src="/static/interface_images/system_name.png" alt="Gus Goof Image Search" class="image_name" height="120" width="420">
+            </div>
+        </div>
+        <div class="search_box">
+            <div class="text_desc">
+                <div class="first_line">Search by image</div>
+                <div class="second_line">Search Gus Goof with an image instead of text. Try input image here.</div>
+            </div>
+            <div class="upload_file_container">
+                <div id="upload_places">
+                    <div class="title_upload">
+                        <div class="title_name">Upload an image</div>
+                    </div>
+                    <div id="upload_box">
+                        <div style="padding: 20px; ">
+                            <form id="upload-file" action="http://localhost:8000" method="POST", style="display: flex; justify-content: space-between;" enctype="multipart/form-data">
+                                {% csrf_token %}
+
+                                <div>
+                                    <div>
+                                        <input type="file" id="input-img" name="file" class="image" accept=".png, .jpg, .jpeg">
+                                    </div>
+                                    <div style="margin: 7px 4px;">
+                                        <label class="label_text">Number of outcomes:</label>
+                                        <input class="AddInput" name="result_number" type="number" value="20"/>
+                                    </div>
+                                </div>
+
+                                <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="modalLabel">Crop image</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="img-container">
+                                                    <div class="row">
+                                                        <div class="col-md-8">  
+                                                            <!--  default image where we will set the src via jquery-->
+                                                            <img id="image">
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="preview"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                <button type="button" class="btn btn-primary" id="crop">Crop</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="loader" style="display: none; margin: 7px 0;"></div>
+
+                                <div style="margin: 7px 0;">
+                                    <button type="submit" onclick="showLoader()" class="search_button">Search by image</button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="none"></div>
+    </div>
+
+    <script src="/static/assets/js/jquery-3.6.0.min.js" type="text/javascript"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="/static/assets/js/cropper.min.js" type="text/javascript"></script>
+    <script src="/static/assets/js/main.js" type="text/javascript"></script>
+    
+
+    {% include "footer.html" %}
+
+</body>
+</html>
