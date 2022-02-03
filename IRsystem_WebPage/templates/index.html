@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="/static/assets/css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
     <link href="/static/assets/css/cropper.min.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;1,300;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
     <title>Gus Goof Image Search</title>
 
     <style>
@@ -142,6 +144,95 @@
             margin: 10px;
             border: 1px solid red;
         }
+
+
+        /* Result page css */
+        * {
+        margin: 0;
+        padding: 0;
+        }
+
+        .result__result_content {
+            width: 100%;
+            background-color: #F2F2F2;
+            min-height: 75vh;
+            padding: 80px 0;
+        }
+
+        .result__container {
+            display: flex;
+            justify-content: center;
+
+        }
+        .result__container_fluid {
+            width: 100%;
+        }
+
+        .result__pop {
+            font-weight: 400;
+            font-style: normal;
+            font-family: 'Abril Fatface', cursive;
+            color: #000000;
+            font-size: 40px;
+            line-height: 1.3;
+            letter-spacing: 0px;
+            text-align: center;
+            padding-bottom: 20px;
+        }
+
+        hr {
+            display: block;
+            unicode-bidi: isolate;
+            margin-block-start: 0.5em;
+            margin-block-end: 0.5em;
+            margin-inline-start: auto;
+            margin-inline-end: auto;
+            overflow: hidden;
+            border-style: inset;
+            border-width: 1px;
+            border-color: #cbb58b;
+        }
+
+        .result__relevant_image_lst{
+            display: flex;
+            flex-wrap: wrap;
+            padding-top: 50px;
+        }
+
+        .result__image_info{
+            width: 25%;
+            padding: 30px 0px;
+        }
+
+        .result__image_box {
+            width: 100%;
+            height: 320px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .result__image{
+            width: 80%;
+            height: 320px;
+            border-radius: 5px;
+            box-shadow: -5px 0px 14px 1px rgb(79 79 79 / 40%);
+        }
+
+        .result__image-name{
+          margin-top: 20px;
+          text-align: center;
+          font-weight: 400;
+          font-style: normal;
+          font-family: 'Abril Fatface', cursive;
+          color: #000000;
+          font-size: 20px;
+          line-height: 1.4;
+          letter-spacing: 0px;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          width: 90%;
+        }
     </style>
 
 </head>
@@ -149,7 +240,9 @@
 
     {% include "header.html" %}
 
-    <div class="content">
+    <div class="result_page"></div>
+
+    <div class="content home_page">
         <div class="system_name">
             <div class="header_name">
                 <img src="/static/interface_images/system_name.png" alt="Gus Goof Image Search" class="image_name" height="120" width="420">
@@ -176,7 +269,7 @@
                                     </div>
                                     <div style="margin: 7px 4px;">
                                         <label class="label_text">Number of outcomes:</label>
-                                        <input class="AddInput" name="result_number" type="number" value="20"/>
+                                        <input class="AddInput" id="result_number" name="result_number" type="number" value="20"/>
                                     </div>
                                 </div>
 

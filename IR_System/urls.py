@@ -20,5 +20,5 @@ from IRsystem_WebPage import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index),
-    path('result/', views.result),
+    # path('result/', views.result),
 ]

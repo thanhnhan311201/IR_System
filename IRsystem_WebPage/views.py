@@ -44,16 +44,16 @@ def index(request, *args, **kwargs):
     
     return render(request, 'index.html')
 
-def result(request):
-    if request.method == 'GET':
-        if not results == None:
-            relevant_imgs = []
-            for img_infor in results:
-                relevant_imgs.append(img_infor[1])
+# def result(request):
+#     if request.method == 'GET':
+#         if not results == None:
+#             relevant_imgs = []
+#             for img_infor in results:
+#                 relevant_imgs.append(img_infor[1])
 
-            context = {
-                'query_img': query_image_file,
-                'relevant_imgs': relevant_imgs,
-            }
+#             context = {
+#                 'query_img': query_image_file,
+#                 'relevant_imgs': relevant_imgs,
+#             }
 
-    return render(request, 'result.html', context)
+#     return render(request, 'result.html', context)

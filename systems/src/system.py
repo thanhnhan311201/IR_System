@@ -14,7 +14,7 @@ except:
     from systems.src import feature_extractor
 
 class CBIR_System:
-    def __init__(self, dataset_path='systems/datasets/paris_dataset/', image_folder='IRsystem_WebPage/static/datasets/paris_dataset/images/'):
+    def __init__(self, dataset_path='systems/datasets/oxbuild_dataset/', image_folder='IRsystem_WebPage/static/datasets/oxbuild_dataset/images/'):
         self.extractor_method = 'Xception_FE'
         self.extractor = feature_extractor.Xception_FE()
 
