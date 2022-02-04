@@ -18,10 +18,22 @@ class CBIR_System:
         self.extractor_method = 'Xception_FE'
         self.extractor = feature_extractor.Xception_FE()
 
+        if not os.path.exists('systems/datasets/'):
+            os.mkdir('systems/datasets/')
         self.dataset_path = dataset_path
+        if not os.path.exists(self.dataset_path):
+            os.mkdir(self.dataset_path)
+
+        if not os.path.exists('IRsystem_WebPage/static/datasets/'):
+            os.mkdir('IRsystem_WebPage/static/datasets/')
+        if not os.path.exists('IRsystem_WebPage/static/datasets/oxbuild_dataset/'):
+            os.mkdir('IRsystem_WebPage/static/datasets/oxbuild_dataset/')
+        self.image_folder = image_folder
+        if not os.path.exists(self.image_folder):
+            os.mkdir(self.image_folder)
+
         self.feature_folder_path = dataset_path + 'feature_folder/'
         self.gt_folder_path = dataset_path + 'gt_files/'
-        self.image_folder = image_folder
 
     def index_dataset(self):
         if not os.path.exists(self.feature_folder_path):
