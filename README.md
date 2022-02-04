@@ -6,7 +6,6 @@ This project is build based on Python and Django Platform.
 
 ## 1. Installation
 
----
 
 Both windows, macos and linux operating systems work well with this project.
 
@@ -39,7 +38,7 @@ Recommended working environment:
         python3 -m virtualenv my_env
         ```
 
-        This command will create an executable environment named **my_env** with your python version.
+        This command will create an virtual environment named **my_env** with your python version.
 
     - To activate the virtual environment you just created, enter the following command at the command line.
         
@@ -78,7 +77,6 @@ python3 -m pip install -r requirements.txt
 
 ## 2. Dataset Preparation
 
----
 
 ### 2.1. Download dataset images
 
@@ -119,7 +117,6 @@ systems
 
 ## 3. Running Locally
 
----
 
 ### 3.1. Index dataset
 
@@ -131,7 +128,7 @@ python3 systems/src/index_dataset.py
 
 ### 3.2. Evaluate system
 
-For indexing dataset, please run the following command.
+For evaluate system, please run the following command.
 
 ```bash
 python3 systems/src/evaluate_system.py.py
