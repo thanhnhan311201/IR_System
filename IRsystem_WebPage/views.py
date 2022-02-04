@@ -8,6 +8,7 @@ import cv2
 import json
 import numpy as np
 from PIL import Image
+import os
 
 from systems.src.system import CBIR_System
 
@@ -33,6 +34,9 @@ def index(request, *args, **kwargs):
 
         relevant_imgs, query_time = my_system.retrieve_img(query_img, result_number)
         results = relevant_imgs
+
+        if not os.path.exists('IRsystem_WebPage/static/query_images/'):
+            os.mkdir('IRsystem_WebPage/static/query_images/')
 
         query_image_file = '/static/query_images/query_img.jpg'
         cv2.imwrite('IRsystem_WebPage' + query_image_file, image)
