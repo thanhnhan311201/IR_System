@@ -131,7 +131,7 @@ python3 systems/src/index_dataset.py
 For evaluate system, please run the following command.
 
 ```bash
-python3 systems/src/evaluate_system.py.py
+python3 systems/src/evaluate_system.py
 ```
 
 The resulting file will be saved at ```systems/datasets/```
