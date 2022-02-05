@@ -86,15 +86,15 @@ python3 -m pip install -r requirements.txt
 
 ```
 IR_System
-└───IRsystem_WebPage
-        └───static
-                └───datasets
-                        └───oxbuild_dataset
-                                └───images
-                                        │all_souls_000000.jpg
-                                        │all_souls_000001.jpg
-                                        │all_souls_000002.jpg
-                                        |...
+    └───IRsystem_WebPage
+            └───static
+                    └───datasets
+                            └───oxbuild_dataset
+                                    └───images
+                                            │all_souls_000000.jpg
+                                            │all_souls_000001.jpg
+                                            │all_souls_000002.jpg
+                                            |...
 ```
 
 ### 2.2. Download groundtruth files
@@ -104,15 +104,16 @@ IR_System
 - Then you need to extract and put it in folder ```systems/datasets/```
 
 ```
-systems
-    └───datasets
-            └───oxbuild_dataset
-                    └───gt_files
-                            │all_souls_1_good.txt
-                            │all_souls_1_junk.txt
-                            │all_souls_1_ok.txt
-                            │all_souls_1_quey.txt
-                            |...
+IR_System
+    └───systems
+        └───datasets
+                └───oxbuild_dataset
+                        └───gt_files
+                                │all_souls_1_good.txt
+                                │all_souls_1_junk.txt
+                                │all_souls_1_ok.txt
+                                │all_souls_1_quey.txt
+                                |...
 ```
 
 ## 3. Running Locally
@@ -137,12 +138,13 @@ python3 systems/src/evaluate_system.py
 The resulting file will be saved at ```systems/datasets/```
 
 ```
-systems
-    └───datasets
-            └───oxbuild_dataset
-                    └───evaluation_result
-                            │eval_result.txt
-                            |...
+IR_System
+    └───systems
+            └───datasets
+                    └───oxbuild_dataset
+                            └───evaluation_result
+                                    │eval_result.txt
+                                    |...
 ```
 
 ### 3.3. Run the system on the web
