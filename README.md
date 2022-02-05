@@ -7,7 +7,7 @@ This project is build based on Python and Django Platform.
 ## 1. Installation
 
 
-Both windows, macos and linux operating systems work well with this project.
+This project is compatible with Windows, Mac OS X, and Linux operating systems.
 
 Recommended working environment:
 - tensorflow >= 2.7.0
