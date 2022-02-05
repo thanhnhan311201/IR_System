@@ -158,3 +158,5 @@ Then run the following command to start the system.
 ```bash
 python3 manage.py runserver
 ```
+
+## 2. Video demo: [Image Retrieval System](https://youtu.be/HS3a0v89qVE)
