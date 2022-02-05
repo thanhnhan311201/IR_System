@@ -159,4 +159,4 @@ Then run the following command to start the system.
 python3 manage.py runserver
 ```
 
-## 2. Demo video: [Image Retrieval System](https://youtu.be/HS3a0v89qVE)
+## 4. Demo video: [Image Retrieval System](https://youtu.be/HS3a0v89qVE)
