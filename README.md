@@ -5,7 +5,6 @@ CS336.M11.KHCL Final Project.
 This project is build based on Python and Django Platform.
 
 ## 1. Installation
-
 This project is compatible with Windows, Mac OS X, and Linux operating systems.
 
 Recommended working environment:
